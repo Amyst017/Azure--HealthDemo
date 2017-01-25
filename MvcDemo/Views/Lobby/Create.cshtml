@@ -1,0 +1,55 @@
+﻿@model MvcDemo.Models.LobbyistViewModels
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Lobby/_Layout.cshtml";
+}
+
+@{
+    Html.EnableClientValidation(true);
+    Html.EnableUnobtrusiveJavaScript(true);
+}
+
+<!-- panel body -->
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Type, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Type)
+                @Html.ValidationMessageFor(model => model.Type)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsRegistered, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IsRegistered)
+                @Html.ValidationMessageFor(model => model.IsRegistered)
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-sm-8  col-md-offset-2" style="padding-top: 6px; border-top: 1px solid lightcoral; ">
+                <a class="btn btn-sm btn-default" onclick="location.href='@Url.Action("Index", "Lobby")'">Cancel</a>
+                <input type="submit" value="Save" class="btn btn-sm btn-primary" />
+            </div>
+
+        </div>
+
+
+    </div>
+}
+
+

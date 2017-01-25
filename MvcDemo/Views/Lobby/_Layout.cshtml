@@ -1,0 +1,54 @@
+﻿@{Layout = "~/Views/Shared/_Layout.cshtml";}
+
+
+<div class="Content">
+    <div class="Wrapper">
+        <div class="container-fluid scrollableView">
+
+            <div class="row" style="margin-bottom: 20px;">
+                <div class="form-group ">
+                    <div class="col-sm-8" style="margin-top: 20px;">
+                        <a class="btn btn-default" href="@Url.Action("Index", "Lobby")">
+                            <i class="fa fa-arrow-left"> Back to list</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h1 class="">
+                            @ViewBag.Title
+                        </h1>
+                    </div>
+
+                    <div class="panel-body">
+                        @RenderBody()
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<a id="scrlTop" href="#" class="btn btn-primary back-to-top" style="float:right; margin-top:20px;"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+<br/>
+
+@RenderSection("scripts", required: false)
+@section Scripts {
+    <script type="text/javascript">
+        $('input[type=text]').each(function () {
+            var req = $(this).attr('data-val-required');
+            if (undefined != req) {
+                var label = $('label[for="' + $(this).attr('id') + '"]');
+                var text = label.text();
+                if (text.length > 0) {
+                    label.prepend('<span style="color:red">* </span>');
+                }
+            }
+        });
+
+    </script>
+}
